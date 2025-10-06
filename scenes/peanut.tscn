@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://knoxb30q2ksv"]
+
+[sub_resource type="Gradient" id="Gradient_mkd6g"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(0.76862746, 0.68235296, 0.2, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_l2pgf"]
+gradient = SubResource("Gradient_mkd6g")
+
+[node name="Peanut" type="Sprite2D"]
+position = Vector2(-2.3841858e-07, -2.2737368e-13)
+scale = Vector2(0.21875, 0.4296875)
+texture = SubResource("GradientTexture2D_l2pgf")

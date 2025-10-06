@@ -1,5 +1,6 @@
 extends Node2D
 @onready var peanut_count: Label = $"Peanut Count"
+
 var score: int = 0
 
 func _ready():
