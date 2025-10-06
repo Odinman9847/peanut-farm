@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://di3dhcufjthht"]
+
+[ext_resource type="Script" uid="uid://bd4oemabms1w1" path="res://scripts/peanut_plant.gd" id="1_mq15s"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_mq15s"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2bi05"]
+size = Vector2(72, 64)
+
+[node name="PeanutPlant" type="Area2D"]
+script = ExtResource("1_mq15s")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(9.536743e-07, 0)
+scale = Vector2(72, 64)
+texture = SubResource("PlaceholderTexture2D_mq15s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_2bi05")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]

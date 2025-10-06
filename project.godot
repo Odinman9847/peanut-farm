@@ -11,5 +11,10 @@ config_version=5
 [application]
 
 config/name="Peanut Farm"
+run/main_scene="uid://ckwtwbotudd4s"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/godot-vim/plugin.cfg")
