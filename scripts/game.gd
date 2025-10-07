@@ -17,6 +17,8 @@ func update_ui() -> void:
 	peanut_count_label.text = "Peanuts: " + str(peanut_count)
 	money_label.text = "Money: $" + str(money)
 	buy_plant_label.text = "Peanut Plant: $" + str(plant_cost)
+	
+	buy_plant_button.disabled = (money < plant_cost)
 
 func increment_peanut_count():
 	peanut_count += 1
