@@ -35,7 +35,17 @@ offset_right = 1152.0
 offset_bottom = 648.0
 mouse_filter = 2
 
-[node name="Sell Button" type="Button" parent="CanvasLayer/Right Bar"]
+[node name="Sell Shelled Peanuts Button" type="Button" parent="CanvasLayer/Right Bar"]
+layout_mode = 0
+offset_left = 901.0
+offset_top = 542.0
+offset_right = 1152.0
+offset_bottom = 592.0
+focus_mode = 0
+theme_override_font_sizes/font_size = 24
+text = "Sell Shelled Peanuts"
+
+[node name="Sell Peanuts Button" type="Button" parent="CanvasLayer/Right Bar"]
 layout_mode = 0
 offset_left = 901.0
 offset_top = 595.0
@@ -81,6 +91,33 @@ focus_mode = 0
 theme_override_font_sizes/font_size = 24
 text = "Buy"
 
+[node name="Buy Sheller" type="Control" parent="CanvasLayer/Right Bar"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Buy Sheller Label" type="Label" parent="CanvasLayer/Right Bar/Buy Sheller"]
+layout_mode = 0
+offset_left = 902.0
+offset_top = 85.0
+offset_right = 1153.0
+offset_bottom = 138.0
+theme_override_font_sizes/font_size = 24
+text = "Sheller: $10"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Buy Sheller Button" type="Button" parent="CanvasLayer/Right Bar/Buy Sheller"]
+layout_mode = 0
+offset_left = 927.0
+offset_top = 129.0
+offset_right = 1129.0
+offset_bottom = 171.0
+focus_mode = 0
+theme_override_font_sizes/font_size = 24
+text = "Buy"
+
 [node name="Top Bar" type="Control" parent="CanvasLayer"]
 layout_mode = 3
 anchors_preset = 0
@@ -104,13 +141,46 @@ text = "Money: $0"
 
 [node name="Peanut Count" type="Label" parent="CanvasLayer/Top Bar"]
 layout_mode = 0
-offset_left = 627.0
-offset_top = 25.0
-offset_right = 878.0
-offset_bottom = 70.0
+offset_left = 635.0
+offset_top = 23.0
+offset_right = 886.0
+offset_bottom = 68.0
 theme_override_font_sizes/font_size = 32
 text = "Peanuts: 0"
-horizontal_alignment = 1
+
+[node name="Shelled Peanut Count" type="Label" parent="CanvasLayer/Top Bar"]
+layout_mode = 0
+offset_left = 636.0
+offset_top = 59.0
+offset_right = 919.0
+offset_bottom = 104.0
+theme_override_font_sizes/font_size = 24
+text = "Shelled Peanuts: 0"
+
+[node name="Bottom Bar" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_top = 594.0
+offset_right = 901.0
+offset_bottom = 648.0
+
+[node name="Bottom Bar Background" type="ColorRect" parent="CanvasLayer/Bottom Bar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.23, 0.15429167, 0.048299994, 1)
+
+[node name="Shell Peanut Button" type="Button" parent="CanvasLayer/Bottom Bar"]
+layout_mode = 0
+offset_right = 189.0
+offset_bottom = 54.0
+focus_mode = 0
+theme_override_font_sizes/font_size = 24
+text = "Shell Peanut"
 
 [node name="Peanut Plant Spawns" type="Node" parent="."]
 
@@ -136,5 +206,8 @@ position = Vector2(112, 445)
 position = Vector2(784, 445)
 
 [connection signal="picked" from="Peanut Plant" to="." method="_on_peanut_plant_picked"]
-[connection signal="pressed" from="CanvasLayer/Right Bar/Sell Button" to="." method="_on_sell_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Right Bar/Sell Shelled Peanuts Button" to="." method="_on_sell_shelled_peanuts_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Right Bar/Sell Peanuts Button" to="." method="_on_sell_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Right Bar/Buy Plant/Buy Plant Button" to="." method="_on_buy_plant_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Right Bar/Buy Sheller/Buy Sheller Button" to="." method="_on_buy_sheller_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Bottom Bar/Shell Peanut Button" to="." method="_on_shell_peanut_button_pressed"]
