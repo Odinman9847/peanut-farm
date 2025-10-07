@@ -5,15 +5,13 @@ var peanut_count: int = 0
 var max_peanuts: int
 var spawned_peanuts: Array = []
 
+signal picked
 
 @onready var spawn_points: Array = $Markers.get_children()
 
 func _ready() -> void:
 	max_peanuts = spawn_points.size()
-	print(max_peanuts)
 
-
-signal picked
 
 func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	if event is InputEventMouseButton:
@@ -25,16 +23,10 @@ func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> voi
 				picked.emit()
 			
 			
-
-
 func _on_timer_timeout() -> void:
 	if peanut_count < max_peanuts:
 		spawn_peanut(spawn_points[peanut_count])
-		print("Spawned peanut at marker: ", spawn_points[peanut_count])
-		print("Peanut count: ", peanut_count)
 		peanut_count += 1
-	else:
-		print("At max index! Skipping")
 		
 func spawn_peanut(marker: Marker2D) -> void:
 	var new_peanut = PEANUT.instantiate()

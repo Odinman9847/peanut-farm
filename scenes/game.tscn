@@ -22,6 +22,7 @@ mouse_filter = 2
 color = Color(0.3225713, 0.22193426, 0.12561467, 1)
 
 [node name="Peanut Plant" parent="." instance=ExtResource("1_uwrxv")]
+visible = false
 position = Vector2(425, 445)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -110,6 +111,29 @@ offset_bottom = 70.0
 theme_override_font_sizes/font_size = 32
 text = "Peanuts: 0"
 horizontal_alignment = 1
+
+[node name="Peanut Plant Spawns" type="Node" parent="."]
+
+[node name="Marker2D Initial" type="Marker2D" parent="Peanut Plant Spawns"]
+position = Vector2(425, 445)
+
+[node name="Marker2D" type="Marker2D" parent="Peanut Plant Spawns"]
+position = Vector2(291, 445)
+
+[node name="Marker2D2" type="Marker2D" parent="Peanut Plant Spawns"]
+position = Vector2(560, 445)
+
+[node name="Marker2D3" type="Marker2D" parent="Peanut Plant Spawns"]
+position = Vector2(192, 445)
+
+[node name="Marker2D4" type="Marker2D" parent="Peanut Plant Spawns"]
+position = Vector2(664, 445)
+
+[node name="Marker2D5" type="Marker2D" parent="Peanut Plant Spawns"]
+position = Vector2(93, 445)
+
+[node name="Marker2D6" type="Marker2D" parent="Peanut Plant Spawns"]
+position = Vector2(775, 446)
 
 [connection signal="picked" from="Peanut Plant" to="." method="_on_peanut_plant_picked"]
 [connection signal="pressed" from="CanvasLayer/Right Bar/Sell Button" to="." method="_on_sell_button_pressed"]
