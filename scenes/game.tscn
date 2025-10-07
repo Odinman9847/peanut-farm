@@ -7,12 +7,14 @@
 script = ExtResource("1_yqjtg")
 
 [node name="Sky" type="ColorRect" parent="."]
+z_index = -100
 offset_right = 1152.0
 offset_bottom = 648.0
 mouse_filter = 2
 color = Color(0.16078432, 0.627451, 1, 1)
 
 [node name="Ground" type="ColorRect" parent="."]
+z_index = -100
 offset_top = 445.0
 offset_right = 1152.0
 offset_bottom = 648.0
@@ -20,49 +22,94 @@ mouse_filter = 2
 color = Color(0.3225713, 0.22193426, 0.12561467, 1)
 
 [node name="Peanut Plant" parent="." instance=ExtResource("1_uwrxv")]
-position = Vector2(571, 445)
-
-[node name="Peanut Count" type="Label" parent="."]
-offset_left = 943.0
-offset_top = -2.0
-offset_right = 1176.0
-offset_bottom = 63.0
-theme_override_font_sizes/font_size = 32
-text = "Peanuts: 0"
-horizontal_alignment = 1
-
-[node name="Money" type="Label" parent="."]
-offset_left = 444.0
-offset_right = 714.0
-offset_bottom = 67.0
-theme_override_font_sizes/font_size = 42
-text = "Money: $0"
+position = Vector2(425, 445)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Control" type="Control" parent="CanvasLayer"]
+[node name="Right Bar" type="Control" parent="CanvasLayer"]
+z_index = 1
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1152.0
 offset_bottom = 648.0
 mouse_filter = 2
 
-[node name="Sell Button" type="Button" parent="CanvasLayer/Control"]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -224.0
-offset_top = -65.0
-offset_right = -5.0
-offset_bottom = -5.0
-grow_horizontal = 0
-grow_vertical = 0
+[node name="Sell Button" type="Button" parent="CanvasLayer/Right Bar"]
+layout_mode = 0
+offset_left = 901.0
+offset_top = 595.0
+offset_right = 1152.0
+offset_bottom = 648.0
 focus_mode = 0
 theme_override_font_sizes/font_size = 32
 text = "Sell Peanuts"
 
+[node name="Right Bar Background" type="ColorRect" parent="CanvasLayer/Right Bar"]
+z_index = -1
+layout_mode = 0
+offset_left = 901.0
+offset_right = 1152.0
+offset_bottom = 648.0
+mouse_filter = 2
+color = Color(0.29352012, 0.3869489, 0.29747227, 1)
+
+[node name="Buy Plant" type="Control" parent="CanvasLayer/Right Bar"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Buy Plant Label" type="Label" parent="CanvasLayer/Right Bar/Buy Plant"]
+layout_mode = 0
+offset_left = 901.0
+offset_top = -1.0
+offset_right = 1152.0
+offset_bottom = 52.0
+theme_override_font_sizes/font_size = 24
+text = "Peanut Plant:"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Buy Plant Button" type="Button" parent="CanvasLayer/Right Bar/Buy Plant"]
+layout_mode = 0
+offset_left = 926.0
+offset_top = 43.0
+offset_right = 1128.0
+offset_bottom = 85.0
+theme_override_font_sizes/font_size = 24
+text = "Buy"
+
+[node name="Top Bar" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Top Bar Background" type="ColorRect" parent="CanvasLayer/Top Bar"]
+layout_mode = 0
+offset_right = 901.0
+offset_bottom = 115.0
+color = Color(0.09480093, 0.3246062, 0.39062724, 1)
+
+[node name="Money" type="Label" parent="CanvasLayer/Top Bar"]
+layout_mode = 0
+offset_left = 319.0
+offset_top = 18.0
+offset_right = 589.0
+offset_bottom = 85.0
+theme_override_font_sizes/font_size = 42
+text = "Money: $0"
+
+[node name="Peanut Count" type="Label" parent="CanvasLayer/Top Bar"]
+layout_mode = 0
+offset_left = 627.0
+offset_top = 25.0
+offset_right = 878.0
+offset_bottom = 70.0
+theme_override_font_sizes/font_size = 32
+text = "Peanuts: 0"
+horizontal_alignment = 1
+
 [connection signal="picked" from="Peanut Plant" to="." method="_on_peanut_plant_picked"]
-[connection signal="pressed" from="CanvasLayer/Control/Sell Button" to="." method="_on_sell_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Right Bar/Sell Button" to="." method="_on_sell_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Right Bar/Buy Plant/Buy Plant Button" to="." method="_on_buy_plant_button_pressed"]
