@@ -12,6 +12,8 @@ var current_peanut_plants: int = 0
 @onready var peanut_count_label: Label = $"CanvasLayer/Top Bar/Peanut Count"
 @onready var buy_plant_label: Label = $"CanvasLayer/Right Bar/Buy Plant/Buy Plant Label"
 @onready var shelled_peanut_count_label: Label = $"CanvasLayer/Top Bar/Shelled Peanut Count"
+@onready var buy_sheller_label: Label = $"CanvasLayer/Right Bar/Buy Sheller/Buy Sheller Label"
+
 
 
 @onready var plant_spawn_points: Array = $"Peanut Plant Spawns".get_children()
@@ -42,7 +44,8 @@ func update_ui() -> void:
 	shelled_peanut_count_label.text = "Shelled Peanuts: " + str(shelled_peanut_count)
 	
 	if current_peanut_plants >= max_peanut_plants:
-		buy_plant_label.text = "Out Of Stock!"
+		buy_plant_label.text = "Peanut Plant"
+		buy_plant_button.text = "Out Of Stock"
 	else:
 		buy_plant_label.text = "Peanut Plant: $" + str(plant_cost)
 
@@ -93,11 +96,12 @@ func _on_buy_sheller_button_pressed() -> void:
 		sell_shelled_peanuts_button.visible = true
 		shelled_peanut_count_label.visible = true
 		peanut_count_label.position.y -= 15
+		buy_sheller_label.text = "Sheller"
+		buy_sheller_button.text = "Out Of Stock"
 		update_ui()
 
 
 func _on_shell_peanut_button_pressed() -> void:
-	print("Shell Button Pressed!")
 	if peanut_count > 0:
 		peanut_count -= 1
 		shelled_peanut_count += 1
